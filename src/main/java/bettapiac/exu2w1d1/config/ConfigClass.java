@@ -17,7 +17,7 @@ import java.util.List;
 public class ConfigClass {
 
     @Bean
-    public String getCoverChargePrice(@Value("${app.coverChargePrice}") String coverChargePrice) {
+    public double coverChargePrice(@Value("${app.coverChargePrice}") double coverChargePrice) {
         return coverChargePrice;
     }
 

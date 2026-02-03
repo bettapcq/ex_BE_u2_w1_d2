@@ -3,6 +3,7 @@ package bettapiac.exu2w1d1.entities;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @ToString
+@PropertySource("application.properties")
 @Component
 public class Order {
     private String id;
@@ -19,6 +21,7 @@ public class Order {
     private OrderStatus status;
     private int coverChargesNumber;
     private LocalDateTime orderTime;
+    
     private Double coverChargePrice;
     private Double totalPrice;
 
