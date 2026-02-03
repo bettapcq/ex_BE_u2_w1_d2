@@ -17,20 +17,20 @@ import java.util.List;
 @Component
 public class Order {
     private String id;
+    private Table table;
     private List<MenuItem> menuItems;
     private OrderStatus status;
     private int coverChargesNumber;
     private LocalDateTime orderTime;
-    
     private Double coverChargePrice;
     private Double totalPrice;
 
-    public Order(String id, List<MenuItem> menuItems, OrderStatus status, int coverChargesNumber, LocalDateTime orderTime) {
+    public Order(String id, List<MenuItem> menuItems, OrderStatus status, int coverChargesNumber) {
         this.id = id;
         this.menuItems = menuItems;
         this.status = status;
         this.coverChargesNumber = coverChargesNumber;
-        this.orderTime = orderTime;
+        this.orderTime = LocalDateTime.now();
         getTotal();
     }
 
