@@ -1,7 +1,10 @@
 package bettapiac.exu2w1d1.entities;
 
+import org.springframework.stereotype.Component;
+
 import java.util.List;
 
+@Component
 public class Menu {
     private List<Pizza> pizzasList;
     private List<Drink> drinksList;

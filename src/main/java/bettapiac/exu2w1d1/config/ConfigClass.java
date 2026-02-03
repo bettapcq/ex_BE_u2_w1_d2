@@ -1,10 +1,6 @@
 package bettapiac.exu2w1d1.config;
 
-import bettapiac.exu2w1d1.entities.Drink;
-import bettapiac.exu2w1d1.entities.Menu;
-import bettapiac.exu2w1d1.entities.Pizza;
-import bettapiac.exu2w1d1.entities.Topping;
-import lombok.Value;
+import bettapiac.exu2w1d1.entities.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
@@ -15,11 +11,6 @@ import java.util.List;
 @Configuration
 @PropertySource("application.properties")
 public class ConfigClass {
-
-    @Bean
-    public double coverChargePrice(@Value("${app.coverChargePrice}") double coverChargePrice) {
-        return coverChargePrice;
-    }
 
     @Bean
     public Topping pomodoro() {
@@ -99,6 +90,23 @@ public class ConfigClass {
     public Drink sprite() {
         return new Drink("Sprite", 3.0, 150);
     }
+
+    @Bean
+    public Table t1() {
+        return new Table(1, 4, TableStatus.FREE);
+    }
+
+    @Bean
+    public Table t2() {
+        return new Table(2, 6, TableStatus.FREE);
+
+    }
+
+    @Bean
+    public Table t3() {
+        return new Table(3, 2, TableStatus.FREE);
+    }
+
 
     // Menu
     @Bean

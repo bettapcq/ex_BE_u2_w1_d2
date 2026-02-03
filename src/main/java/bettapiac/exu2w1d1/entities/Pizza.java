@@ -21,8 +21,9 @@ public class Pizza extends MenuItem {
 
     @Override
     public String toString() {
-        return "Pizza{" +
-                "toppingsList=" + toppingsList +
-                '}';
+        return "Pizza= " +
+                this.getName() + " / " + this.getPrice() +
+                " €";
     }
 }
+

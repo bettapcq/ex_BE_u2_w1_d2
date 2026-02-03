@@ -2,9 +2,7 @@ package bettapiac.exu2w1d1.entities;
 
 import lombok.Getter;
 import lombok.Setter;
-import lombok.ToString;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.stereotype.Component;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -12,9 +10,7 @@ import java.util.List;
 
 @Getter
 @Setter
-@ToString
 @PropertySource("application.properties")
-@Component
 public class Order {
     private String id;
     private Table table;
@@ -22,15 +18,17 @@ public class Order {
     private OrderStatus status;
     private int coverChargesNumber;
     private LocalDateTime orderTime;
-    private Double coverChargePrice;
-    private Double totalPrice;
+    private double coverChargePrice;
+    private double totalPrice;
 
-    public Order(String id, List<MenuItem> menuItems, OrderStatus status, int coverChargesNumber) {
+    public Order(String id, Table table, List<MenuItem> menuItems, OrderStatus status, int coverChargesNumber, double coverChargePrice) {
         this.id = id;
+        this.table = table;
         this.menuItems = menuItems;
         this.status = status;
         this.coverChargesNumber = coverChargesNumber;
         this.orderTime = LocalDateTime.now();
+        this.coverChargePrice = coverChargePrice;
         getTotal();
     }
 
@@ -39,8 +37,20 @@ public class Order {
         for (MenuItem item : menuItems) {
             sum += item.getPrice();
         }
-        sum += coverChargesNumber * (coverChargePrice != null ? coverChargePrice : 0);
+        sum += coverChargesNumber * coverChargePrice;
         this.totalPrice = sum;
     }
 
+    @Override
+    public String toString() {
+        return "__Order_id= '" + id + "\n"
+                + "table=" + table.getNumber() + "\n"
+                + "menuItems=" + menuItems.toString() + "\n"
+                + "status=" + status + "\n"
+                + "orderTime=" + orderTime + "\n"
+                + "coverChargesNumber=" + coverChargesNumber + "\n"
+                + "coverChargePrice=" + coverChargePrice + "\n"
+                + "totalPrice=" + totalPrice + " €" + "\n"
+                + "________";
+    }
 }

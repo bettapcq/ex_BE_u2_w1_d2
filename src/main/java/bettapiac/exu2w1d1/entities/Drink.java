@@ -6,5 +6,8 @@ public class Drink extends MenuItem {
         super(name, price, calories);
     }
 
-
+    @Override
+    public String toString() {
+        return "Drink= " + this.getName() + " / " + this.getPrice() + " € ";
+    }
 }
