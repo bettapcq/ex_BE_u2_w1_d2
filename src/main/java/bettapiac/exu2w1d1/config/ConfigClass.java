@@ -4,14 +4,22 @@ import bettapiac.exu2w1d1.entities.Drink;
 import bettapiac.exu2w1d1.entities.Menu;
 import bettapiac.exu2w1d1.entities.Pizza;
 import bettapiac.exu2w1d1.entities.Topping;
+import lombok.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.PropertySource;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Configuration
+@PropertySource("application.properties")
 public class ConfigClass {
+
+    @Bean
+    public String getCoverChargePrice(@Value("${app.coverChargePrice}") String coverChargePrice) {
+        return coverChargePrice;
+    }
 
     @Bean
     public Topping pomodoro() {
